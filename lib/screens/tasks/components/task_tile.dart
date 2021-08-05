@@ -1,36 +1,42 @@
 import 'package:flutter/material.dart';
 import 'TaskCheckbox.dart';
 
-class TaskTile extends StatefulWidget {
-  @override
-  _TaskTileState createState() => _TaskTileState();
-}
+class TaskTile extends StatelessWidget {
+  final bool isChecked;
+  final String title;
+  final String? time;
+  final Function(bool?) checkboxCallback;
 
-class _TaskTileState extends State<TaskTile> {
-  bool isChecked = false;
+  const TaskTile(
+      {Key? key,
+      required this.isChecked,
+      required this.title,
+      this.time,
+      required this.checkboxCallback})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    final String displayTime = time ?? '';
     return ListTile(
+      contentPadding: EdgeInsets.symmetric(horizontal: 40.0),
+      title: Text(
+        title,
+        style: TextStyle().copyWith(
+          fontWeight: FontWeight.w500,
+          color: isChecked ? Colors.blue : Colors.black,
+          decoration: isChecked ? TextDecoration.lineThrough : null,
+        ),
+      ),
       subtitle: Text(
-        '20:15 - April 29',
+        displayTime,
         style: TextStyle().copyWith(
           color: Colors.black54,
         ),
       ),
-      title: Text(
-        'Call Max',
-        style: TextStyle().copyWith(
-            fontWeight: FontWeight.w500,
-            color: isChecked ? Colors.blue : Colors.black,
-            decoration: isChecked ? TextDecoration.lineThrough : null),
-      ),
       trailing: TaskCheckbox(
         isChecked: isChecked,
-        onTapCallback: (newValue) {
-          setState(() {
-            isChecked = newValue!;
-          });
-        },
+        onTapCallback: checkboxCallback,
       ),
     );
   }
