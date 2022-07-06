@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'TaskCheckbox.dart';
+import 'task_checkbox.dart';
 
 class TaskTile extends StatelessWidget {
   final bool isChecked;
@@ -19,10 +19,10 @@ class TaskTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final String displayTime = time ?? '';
     return ListTile(
-      contentPadding: EdgeInsets.symmetric(horizontal: 40.0),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 40.0),
       title: Text(
         title,
-        style: TextStyle().copyWith(
+        style: const TextStyle().copyWith(
           fontWeight: FontWeight.w500,
           color: isChecked ? Colors.blue : Colors.black,
           decoration: isChecked ? TextDecoration.lineThrough : null,
@@ -30,7 +30,7 @@ class TaskTile extends StatelessWidget {
       ),
       subtitle: Text(
         displayTime,
-        style: TextStyle().copyWith(
+        style: const TextStyle().copyWith(
           color: Colors.black54,
         ),
       ),

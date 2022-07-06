@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class TaskModifier extends StatelessWidget {
@@ -15,9 +17,7 @@ class TaskModifier extends StatelessWidget {
     return Row(
       children: [
         Icon(icon),
-        SizedBox(
-          width: 10,
-        ),
+        SizedBox(width: 10),
         GestureDetector(
           child: Text(content),
           onTap: () {},
